@@ -6,7 +6,7 @@
 <title>محمد كامل | M.K — تصميم جرافيك وهوية بصرية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@700&family=El+Messiri:wght@600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#faf6ec;
@@ -30,7 +30,7 @@
     overflow-x:hidden;
   }
   h1,h2,h3,.display{
-    font-family:'Aref Ruqaa',serif;
+    font-family:'El Messiri',serif;
     font-weight:700;
     color:var(--text-primary);
   }
@@ -39,7 +39,6 @@
   .wrap{max-width:1100px;margin:0 auto;padding:0 32px;}
   .thin-rule{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border:none;}
 
-  /* ---------- NAV ---------- */
   nav{
     position:fixed;top:0;right:0;left:0;z-index:50;
     background:rgba(250,246,236,0.9);
@@ -51,7 +50,7 @@
     padding-top:16px;padding-bottom:16px;
   }
   .brand{
-    font-family:'Aref Ruqaa',serif;font-weight:700;font-size:22px;letter-spacing:1px;color:var(--gold-dark);
+    font-family:'El Messiri',serif;font-weight:700;font-size:22px;letter-spacing:1px;color:var(--gold-dark);
   }
   .brand span{color:var(--text-primary);font-family:'Cairo',sans-serif;font-size:13px;font-weight:400;display:block;letter-spacing:3px;margin-top:2px;}
   nav ul{display:flex;gap:36px;list-style:none;}
@@ -59,7 +58,6 @@
   nav ul li a:hover{color:var(--gold-dark);}
   .nav-toggle{display:none;}
 
-  /* ---------- HERO ---------- */
   .hero{
     position:relative;
     min-height:100vh;
@@ -73,16 +71,46 @@
     opacity:.08;
     pointer-events:none;
   }
+
+  .hero-portrait-wrap{
+    position:relative;
+    width:136px;height:136px;
+    margin:0 auto 20px;
+  }
+  .hero-portrait-wrap::before{
+    content:"";
+    position:absolute;
+    inset:-11px;
+    border-radius:50%;
+    border:1px solid var(--gold-light);
+  }
+  .hero-portrait-wrap::after{
+    content:"";
+    position:absolute;
+    inset:-20px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(184,146,63,0.16), transparent 70%);
+    z-index:-1;
+  }
+  .hero-portrait{
+    width:100%;height:100%;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid var(--surface);
+    box-shadow:0 0 0 2px var(--gold), 0 14px 30px -8px rgba(122,95,38,0.45);
+  }
+
   .hero-mark{
-    font-family:'Aref Ruqaa',serif;font-weight:700;font-size:64px;color:var(--gold);letter-spacing:2px;
+    font-family:'El Messiri',serif;font-weight:700;font-size:40px;color:var(--gold);letter-spacing:2px;
   }
   .hero-mark small{
-    display:block;font-family:'Cairo',sans-serif;font-weight:400;font-size:15px;letter-spacing:8px;color:var(--text-secondary);margin-top:6px;
+    display:block;font-family:'Cairo',sans-serif;font-weight:400;font-size:13px;letter-spacing:6px;color:var(--text-secondary);margin-top:4px;
   }
   .hero h1{
+    font-family:'Reem Kufi',sans-serif;
     font-size:clamp(38px,6vw,72px);
     line-height:1.35;
-    margin:40px 0 24px;
+    margin:36px 0 24px;
     max-width:820px;
   }
   .hero p.lede{
@@ -109,7 +137,6 @@
     font-size:12px;color:var(--text-muted);letter-spacing:2px;
   }
 
-  /* ---------- SECTION SHELL ---------- */
   section{padding:120px 0;}
   .eyebrow{
     font-size:14px;color:var(--gold-dark);margin-bottom:14px;
@@ -117,7 +144,6 @@
   .section-head{max-width:640px;margin-bottom:64px;}
   .section-head h2{font-size:clamp(30px,4vw,44px);line-height:1.4;}
 
-  /* ---------- ABOUT ---------- */
   .about{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
   .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:center;}
   .about p{font-size:18px;color:var(--text-secondary);margin-bottom:20px;}
@@ -129,7 +155,6 @@
   .about-card .label{font-size:14px;color:var(--gold-dark);margin-bottom:12px;}
   .about-card p{font-size:17px;color:var(--text-primary);margin:0;}
 
-  /* ---------- PORTFOLIO ---------- */
   .gallery{
     column-count:3;column-gap:24px;
   }
@@ -148,7 +173,6 @@
     padding-top:10px;
   }
 
-  /* ---------- SERVICES ---------- */
   .services{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
   .service-list{display:flex;flex-direction:column;}
   .service-row{
@@ -164,7 +188,6 @@
   .service-row h3{font-size:22px;margin-bottom:8px;}
   .service-row p{color:var(--text-secondary);font-size:16px;max-width:520px;}
 
-  /* ---------- CONTACT ---------- */
   .contact{text-align:center;}
   .contact h2{font-size:clamp(32px,5vw,50px);margin-bottom:20px;}
   .contact p.lede{font-size:18px;color:var(--text-secondary);max-width:520px;margin:0 auto 44px;}
@@ -186,10 +209,9 @@
     padding:40px 0;text-align:center;
     border-top:1px solid var(--border);
   }
-  footer .signature{font-family:'Aref Ruqaa',serif;color:var(--gold-dark);font-size:16px;letter-spacing:2px;}
+  footer .signature{font-family:'El Messiri',serif;color:var(--gold-dark);font-size:16px;letter-spacing:2px;}
   footer p{font-size:13px;color:var(--text-muted);margin-top:8px;}
 
-  /* ---------- LIGHTBOX ---------- */
   .lightbox{
     position:fixed;inset:0;background:rgba(20,16,8,.92);
     display:none;align-items:center;justify-content:center;
@@ -237,6 +259,11 @@
       <path d="M400 80 L470 340 L730 400 L470 460 L400 720 L330 460 L70 400 L330 340 Z"/>
     </g>
   </svg>
+
+  <div class="hero-portrait-wrap">
+    <img class="hero-portrait" src="https://i.postimg.cc/K88nFN6b/IMG-20260901-152846.jpg" alt="محمد كامل">
+  </div>
+
   <div class="hero-mark">M.K<small>M. KAMIL</small></div>
   <h1>هويـة بصريـة تُنطـق<br>قبـل أن تُقـرأ</h1>
   <p class="lede">تصميـم جرافيـك ومـحتوى بـصري لترجمـة أفـكارك ومشاريعك إلى هويـة تُرى وتُتذكـر.</p>
@@ -269,21 +296,18 @@
       <h2>نـماذج من التصاميـم المُنـجزة</h2>
     </div>
     <div class="gallery">
-      <figure 
- onclick="openLightbox('img1')">
+      <figure onclick="openLightbox('img1')">
         <img id="img1" src="https://i.postimg.cc/qzGFywLL/IMG-20260523-WA0015(1).jpg" alt="هوية قناة التواصل عبر واتساب">
         <figcaption>هوية قناة التواصل عبر واتساب</figcaption>
       </figure>
-      <figure 
-onclick="openLightbox('img2')">
+      <figure onclick="openLightbox('img2')">
         <img id="img2" src="https://i.postimg.cc/PCrR4D31/IMG-20260527-WA0026(1).jpg" alt="تهنئة عيد الأضحى المبارك">
-         <figcaption>تهنئة عيد الأضحى المبارك</figcaption>
+        <figcaption>تهنئة عيد الأضحى المبارك</figcaption>
       </figure>
-      <figure
-onclick="openLightbox('img3')">
+      <figure onclick="openLightbox('img3')">
         <img id="img3" src="https://i.postimg.cc/yDYbPRQm/IMG-20260529-WA0024(1).jpg" alt="إعلان مجلس الجمعة الأسبوعي">
         <figcaption>إعلان مجلس الجمعة الأسبوعي</figcaption>
-      </figure>  
+      </figure>
     </div>
   </div>
 </section>
