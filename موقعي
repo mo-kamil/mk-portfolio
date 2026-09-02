@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>محمد كامل | M.K — تصميم جرافيك وهوية بصرية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400..700&family=El+Messiri:wght@600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#150f1c;
+    --bg-soft:#1b1322;
+    --surface:#231a2c;
+    --ink:#0c0810;
+    --text-primary:#f6efe4;
+    --text-secondary:#bbaec4;
+    --text-muted:#79697f;
+    --accent:#ff5a36;
+    --accent-ink:#1a0b06;
+    --teal:#2fd6c4;
+    --gold:#e8b64a;
+    --border:#372a44;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text-primary);
+    font-family:'Cairo',sans-serif;
+    font-weight:400;
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'El Messiri',serif;font-weight:700;color:var(--text-primary);}
+  .kufi{font-family:'Reem Kufi',sans-serif;font-weight:700;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 32px;}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;right:0;left:0;z-index:60;
+    background:rgba(21,15,28,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;}
+  .brand{font-family:'Reem Kufi',sans-serif;font-weight:700;font-size:24px;color:var(--accent);}
+  .brand span{color:var(--text-secondary);font-family:'Cairo',sans-serif;font-size:12px;font-weight:400;display:block;letter-spacing:3px;margin-top:2px;}
+  nav ul{display:flex;gap:38px;list-style:none;}
+  nav ul li a{position:relative;font-size:15px;color:var(--text-secondary);transition:color .2s;padding-bottom:4px;}
+  nav ul li a::after{content:"";position:absolute;right:0;bottom:0;width:0;height:2px;background:var(--accent);transition:width .25s ease;}
+  nav ul li a:hover{color:var(--text-primary);}
+  nav ul li a:hover::after{width:100%;}
+  .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+  .nav-toggle span{width:24px;height:2px;background:var(--text-primary);display:block;}
+  .nav-overlay{
+    position:fixed;inset:0;background:var(--accent);z-index:55;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;
+    transform:translateY(-100%);transition:transform .4s cubic-bezier(.7,0,.3,1);
+  }
+  .nav-overlay.open{transform:translateY(0);}
+  .nav-overlay a{font-family:'El Messiri',serif;font-weight:700;font-size:30px;color:var(--accent-ink);}
+  .nav-overlay-close{position:absolute;top:26px;left:32px;font-size:30px;color:var(--accent-ink);background:none;border:none;cursor:pointer;}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:150px 24px 0;overflow:hidden;}
+  .hero-glow{position:absolute;inset:-15%;background:radial-gradient(560px circle at var(--mx,50%) var(--my,35%),rgba(255,90,54,.20),transparent 62%);pointer-events:none;transition:background .25s ease-out;}
+  .hero-pattern{position:absolute;inset:0;opacity:.10;pointer-events:none;}
+  .hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;}
+
+  .portrait-block{position:relative;width:150px;height:150px;margin-bottom:34px;}
+  .portrait-panel{position:absolute;inset:0;background:var(--teal);transform:rotate(-7deg) translate(10px,10px);z-index:1;}
+  .hero-portrait{position:relative;z-index:2;width:100%;height:100%;object-fit:cover;border:5px solid var(--bg);box-shadow:0 18px 40px -12px rgba(0,0,0,.55);}
+
+  .hero-mark{font-size:14px;letter-spacing:6px;color:var(--gold);margin-bottom:18px;}
+  .hero h1{font-family:'Reem Kufi',sans-serif;font-size:clamp(40px,7.2vw,88px);line-height:1.28;max-width:920px;}
+  .hero h1 .line{display:block;overflow:hidden;}
+  .hero h1 .line-inner{display:block;transform:translateY(115%);opacity:0;animation:lineUp .9s cubic-bezier(.2,.8,.2,1) forwards;}
+  .hero h1 .line:nth-child(1) .line-inner{animation-delay:.15s;}
+  .hero h1 .line:nth-child(2) .line-inner{animation-delay:.32s;color:var(--accent);}
+  @keyframes lineUp{to{transform:translateY(0);opacity:1;}}
+
+  .hero p.lede{font-size:19px;color:var(--text-secondary);max-width:520px;margin:30px 0 40px;}
+  .hero-ctas{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:70px;}
+  .btn{display:inline-block;padding:16px 42px;background:var(--accent);color:var(--accent-ink);font-size:16px;font-weight:600;transition:transform .25s,box-shadow .25s;}
+  .btn:hover{transform:translateY(-3px);box-shadow:0 14px 26px -10px rgba(255,90,54,.55);}
+  .btn-outline{display:inline-block;padding:15px 40px;border:1.5px solid var(--text-primary);color:var(--text-primary);font-size:16px;font-weight:500;transition:background .25s,color .25s;}
+  .btn-outline:hover{background:var(--text-primary);color:var(--ink);}
+
+  .marquee{position:relative;z-index:2;width:100%;background:var(--accent);overflow:hidden;padding:14px 0;transform:rotate(-1deg);margin:0 -4px;}
+  .marquee-track{display:flex;gap:40px;white-space:nowrap;width:max-content;animation:scrollX 26s linear infinite;}
+  .marquee-track span{font-family:'El Messiri',serif;font-weight:700;font-size:17px;color:var(--accent-ink);}
+  @keyframes scrollX{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:120px 0;}
+  .eyebrow{font-size:14px;color:var(--gold);margin-bottom:14px;}
+  .section-head{max-width:640px;margin-bottom:60px;}
+  .section-head h2{font-size:clamp(30px,4vw,46px);line-height:1.4;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:80px;align-items:center;}
+  .about h2{margin-bottom:26px;}
+  .about p{font-size:18px;color:var(--text-secondary);margin-bottom:20px;}
+  .about-card{background:var(--surface);border-right:4px solid var(--teal);padding:36px;}
+  .about-card .label{font-size:14px;color:var(--teal);margin-bottom:12px;}
+  .about-card p{font-size:17px;color:var(--text-primary);margin:0;}
+
+  /* ---------- GALLERY ---------- */
+  .gallery{column-count:3;column-gap:22px;}
+  .gallery figure{
+    position:relative;break-inside:avoid;margin-bottom:22px;overflow:hidden;cursor:pointer;
+    transform:perspective(700px) rotateX(0) rotateY(0);transition:transform .15s ease-out,box-shadow .3s;
+  }
+  .gallery figure:hover{box-shadow:0 22px 44px -16px rgba(0,0,0,.6);}
+  .gallery img{width:100%;height:auto;display:block;transition:transform .5s ease;}
+  .gallery figure:hover img{transform:scale(1.06);}
+  .gallery figure::before{
+    content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,90,54,.55),rgba(47,214,196,.45));
+    mix-blend-mode:hard-light;opacity:0;transition:opacity .35s ease;pointer-events:none;
+  }
+  .gallery figure:hover::before{opacity:1;}
+  .gallery figcaption{
+    position:absolute;right:0;left:0;bottom:0;padding:22px 18px 16px;
+    background:linear-gradient(to top,rgba(12,8,16,.92),transparent);
+    color:var(--text-primary);font-size:15px;font-weight:600;
+    transform:translateY(100%);transition:transform .35s ease;
+  }
+  .gallery figure:hover figcaption{transform:translateY(0);}
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .service-row{
+    position:relative;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;
+    padding:34px 28px;border-bottom:1px solid var(--border);overflow:hidden;transition:color .3s;
+  }
+  .service-row:last-child{border-bottom:none;}
+  .service-row::before{
+    content:"";position:absolute;inset:0;background:var(--accent);
+    transform:translateX(102%);transition:transform .4s cubic-bezier(.7,0,.3,1);z-index:0;
+  }
+  .service-row:hover::before{transform:translateX(0);}
+  .service-row:hover{color:var(--accent-ink);}
+  .service-icon{position:relative;z-index:1;width:46px;height:46px;border:1.5px solid var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .3s;}
+  .service-row:hover .service-icon{border-color:var(--accent-ink);}
+  .service-icon svg{width:20px;height:20px;stroke:var(--teal);transition:stroke .3s;}
+  .service-row:hover .service-icon svg{stroke:var(--accent-ink);}
+  .service-row h3{position:relative;z-index:1;font-size:22px;margin-bottom:8px;}
+  .service-row p{position:relative;z-index:1;font-size:16px;max-width:520px;color:var(--text-secondary);transition:color .3s;}
+  .service-row:hover p{color:var(--accent-ink);}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--accent);color:var(--accent-ink);text-align:center;}
+  .contact h2{color:var(--accent-ink);font-size:clamp(32px,5vw,52px);margin-bottom:18px;}
+  .contact .eyebrow{color:var(--accent-ink);opacity:.75;}
+  .contact p.lede{font-size:18px;color:var(--accent-ink);opacity:.85;max-width:520px;margin:0 auto 44px;}
+  .contact-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .contact-link{
+    display:inline-flex;align-items:center;gap:10px;padding:15px 30px;
+    border:1.5px solid var(--accent-ink);color:var(--accent-ink);font-size:15.5px;font-weight:600;
+    transition:background .25s,color .25s;
+  }
+  .contact-link svg{width:20px;height:20px;stroke:var(--accent-ink);flex-shrink:0;transition:stroke .25s;}
+  .contact-link:hover{background:var(--accent-ink);color:var(--accent);}
+  .contact-link:hover svg{stroke:var(--accent);}
+
+  footer{padding:44px 0;text-align:center;border-top:1px solid var(--border);}
+  footer .signature{font-family:'Reem Kufi',sans-serif;font-weight:700;color:var(--accent);font-size:17px;}
+  footer p{font-size:13px;color:var(--text-muted);margin-top:8px;}
+
+  .lightbox{position:fixed;inset:0;background:rgba(12,8,16,.94);display:none;align-items:center;justify-content:center;z-index:100;padding:40px;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:90vw;max-height:88vh;border:3px solid var(--accent);}
+  .lightbox-close{position:absolute;top:28px;left:32px;color:var(--text-primary);font-size:32px;cursor:pointer;background:none;border:none;}
+
+  @media (prefers-reduced-motion:reduce){
+    .hero h1 .line-inner{animation:none;transform:translateY(0);opacity:1;}
+    .marquee-track{animation:none;}
+    .gallery figure,.gallery img,.service-row::before{transition:none;}
+  }
+
+  @media (max-width:860px){
+    .about-grid{grid-template-columns:1fr;gap:40px;}
+    .gallery{column-count:2;}
+    nav ul{display:none;}
+    .nav-toggle{display:flex;}
+  }
+  @media (max-width:560px){
+    .gallery{column-count:1;}
+    section{padding:80px 0;}
+    .hero{padding-top:130px;}
+    .about-card{padding:26px;}
+    .service-row{padding:28px 18px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">M.K<span>M. KAMIL</span></div>
+    <ul>
+      <li><a href="#about">نبـذة</a></li>
+      <li><a href="#portfolio">الأعـمال</a></li>
+      <li><a href="#services">الخدمـات</a></li>
+      <li><a href="#contact">تواصـل</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="nav-overlay" id="navOverlay">
+  <button class="nav-overlay-close" id="navClose" aria-label="إغلاق القائمة">×</button>
+  <a href="#about">نبـذة</a>
+  <a href="#portfolio">الأعـمال</a>
+  <a href="#services">الخدمـات</a>
+  <a href="#contact">تواصـل</a>
+</div>
+
+<section class="hero" id="heroSection">
+  <div class="hero-glow" id="heroGlow"></div>
+  <svg class="hero-pattern" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="#e8b64a" stroke-width="1">
+      <circle cx="400" cy="400" r="140"/>
+      <circle cx="400" cy="400" r="260"/>
+      <circle cx="400" cy="400" r="380"/>
+      <path d="M400 60 L480 340 L760 400 L480 460 L400 740 L320 460 L40 400 L320 340 Z"/>
+    </g>
+  </svg>
+
+  <div class="wrap hero-inner">
+    <div class="portrait-block">
+      <div class="portrait-panel"></div>
+      <img class="hero-portrait" src="https://i.postimg.cc/K88nFN6b/IMG-20260901-152846.jpg" alt="محمد كامل">
+    </div>
+
+    <div class="hero-mark">M.K — M. KAMIL</div>
+    <h1>
+      <span class="line"><span class="line-inner">هويـة بصريـة تُنطـق</span></span>
+      <span class="line"><span class="line-inner">قبـل أن تُقـرأ</span></span>
+    </h1>
+    <p class="lede">تصميـم جرافيـك ومـحتوى بـصري لترجمـة أفـكارك ومشاريعك إلى هويـة تُرى وتُتذكـر.</p>
+    <div class="hero-ctas">
+      <a href="#portfolio" class="btn">مشـاهدة الأعـمال</a>
+      <a href="#contact" class="btn-outline">تواصـل معـي</a>
+    </div>
+  </div>
+
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>تصميم جرافيك • هوية بصرية • محتوى سوشيال ميديا • لوحات إعلانية • مواد إعلامية • </span>
+      <span>تصميم جرافيك • هوية بصرية • محتوى سوشيال ميديا • لوحات إعلانية • مواد إعلامية • </span>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <p class="eyebrow">نبـذة</p>
+      <h2>مصـمم جرافيـك وصـانع مـحتوى بـصري، أُتـرجم الأفـكار إلى هويـات تحـمل معـنى</h2>
+      <p>أُعـنى بتحـويل الأفـكار إلى تصـاميم جذابـة وهويـات بصريـة متكامـلة أدمـج فيـها بين اتجـاهات التصميـم الإعـلاني الحديـثة والجمالـيات البصريـة المعاصـرة بأسـلوب دقـيق يلـبي تطـلعات كل مشـروع.</p>
+      <p>شغـفي الدائـم هو تقـديم أعـمال تجـمع بين الجـودة والتأثـير لإبـراز كل مشـروع أعـمل علـيه بأفـضل صـورة ممكـنة.</p>
+    </div>
+    <div class="about-card">
+      <p class="label">خبـرة ميـدانية</p>
+      <p>أتـولى إدارة وتصميـم المـحتوى البـصري الرسـمي للصـفحة الرسـمية لفضـيلة الشيـخ الدكـتور عـبد الحفيـظ العدسـي، من إعـلانات الجُـمَع والمجـالس، إلى التصاميـم المناسـباتية، وصـولاً إلى الهويـة البصريـة الكامـلة للصـفحة.</p>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">أعـمالي</p>
+      <h2>نـماذج من التصاميـم المُنـجزة</h2>
+    </div>
+    <div class="gallery" id="gallery">
+      <figure onclick="openLightbox('img1')">
+        <img id="img1" src="https://i.postimg.cc/g01sz260/andmwa-alyna-20260902-152246-0000.png" alt="هوية قناة التواصل عبر واتساب">
+        <figcaption>هوية قناة التواصل عبر واتساب</figcaption>
+      </figure>
+      <figure onclick="openLightbox('img2')">
+        <img id="img2" src="https://i.postimg.cc/g0RpkrTG/kl-ʿam-wantm-bkhyr-20260902-150455-0000.png" alt="تهنئة عيد الأضحى المبارك">
+        <figcaption>تهنئة عيد الأضحى المبارك</figcaption>
+      </figure>
+      <figure onclick="openLightbox('img3')">
+        <img id="img3" src="https://i.postimg.cc/wMkTx3Mn/mnshwr-Instagram-abyd-w-azrq-bsyt-aslamy-aʿlan-ʿn-dwrat-hfz-w-tʿlym-alqran-a-20260902-152054-0000.png" alt="إعلان مجلس الجمعة الأسبوعي">
+        <figcaption>إعلان مجلس الجمعة الأسبوعي</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">مـا أقدمـه</p>
+      <h2>الخـدمـات</h2>
+    </div>
+    <div class="service-list">
+      <div class="service-row">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z"/></svg>
+        </div>
+        <div>
+          <h3>الهويـات البصـرية</h3>
+          <p>تصميم الهويات البصرية المتكاملة للصفحات والمشاريع</p>
+        </div>
+      </div>
+      <div class="service-row">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 8 h18 M8 12 h8 M8 15.5 h5"/></svg>
+        </div>
+        <div>
+          <h3>اللوحـات الإعلانيـة</h3>
+          <p>إخراج اللوحات الإعلانية والدعوية بمستوى احترافي راقٍ</p>
+        </div>
+      </div>
+      <div class="service-row">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5 h16 v10 H9 l-4 4 v-4 H4 Z"/></svg>
+        </div>
+        <div>
+          <h3>محتـوى السوشيـال ميديـا</h3>
+          <p>تصميم محتوى السوشيال ميديا بأسلوب عصري وجذاب</p>
+        </div>
+      </div>
+      <div class="service-row">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5 L16 12 L10 15.5 Z"/></svg>
+        </div>
+        <div>
+          <h3>المـواد الإعلاميـة</h3>
+          <p>إنتاج المواد الإعلامية بجودة تليق بمشروعك</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="eyebrow">لنبـدأ مشـروعك</p>
+    <h2>تواصـل معـي</h2>
+    <p class="lede">مشروعك يستحق تصميماً يعبر عنه — لا صورةً عابرة تُنسى</p>
+    <div class="contact-links">
+      <a class="contact-link" href="https://wa.me/message/PI6MKQY57QP7N1" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 8.7c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .6.5.2.5.6 1.5.6 1.6.1.1.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.1.6.2.3.8 1.2 1.7 1.9 1.1.9 1.9 1.1 2.2 1.2.3.1.4.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.4.7 1.7.8.3.1.4.2.5.3.1.2.1.9-.2 1.6-.3.7-1.6 1.4-2.2 1.4-.6 0-1.3.1-4.2-1.1-3.5-1.4-5.7-4.9-5.9-5.2-.2-.3-1.4-1.9-1.4-3.6 0-1.7.9-2.5 1.2-2.9Z"/></svg>
+        راسلـني عبـر واتسـاب
+      </a>
+      <a class="contact-link" href="https://www.facebook.com/share/1C3KZXxAoA/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 8.5h-2c-.6 0-1 .4-1 1V12h3l-.4 3h-2.6v7h-3v-7H7v-3h2V9.2C9 6.9 10.3 5.5 12.5 5.5H15v3Z"/></svg>
+        تابعـني عبـر فيسبـوك
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="signature">محمد كامل</div>
+  <p>تصميم وهوية بصرية — جميع الحقوق محفوظة</p>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox(event)">×</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  function openLightbox(id){
+    var src = document.getElementById(id).src;
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox(e){
+    if(e) e.stopPropagation();
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  // mobile nav overlay
+  var navToggle = document.getElementById('navToggle');
+  var navOverlay = document.getElementById('navOverlay');
+  var navClose = document.getElementById('navClose');
+  navToggle.addEventListener('click', function(){ navOverlay.classList.add('open'); });
+  navClose.addEventListener('click', function(){ navOverlay.classList.remove('open'); });
+  navOverlay.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ navOverlay.classList.remove('open'); });
+  });
+
+  // hero cursor glow
+  var heroSection = document.getElementById('heroSection');
+  var heroGlow = document.getElementById('
